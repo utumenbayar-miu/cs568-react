@@ -6,7 +6,9 @@ export default class Student extends Component {
       <div>
         <hr />
         <p>Name: {this.props.name}</p>
-        <p onClick={this.props.incrementAge}>Age: {this.props.age}</p>
+        <p onClick={() => this.props.incrementAge(this.props.index)}>
+          Age: {this.props.age}
+        </p>
       </div>
     );
   }

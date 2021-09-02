@@ -10,11 +10,15 @@ export default class App extends Component {
     ],
   };
 
-  incrementAge = () => {
+  incrementAllAge = () => {
     const students = this.state.students;
-    for (let student of students) {
-      student.age = student.age + 1;
-    }
+    for (let student of students) student.age += 1;
+    this.setState({ students });
+  };
+
+  incrementAge = (index) => {
+    const students = this.state.students;
+    students[index].age += 1;
     this.setState({ students });
   };
 
@@ -24,19 +28,22 @@ export default class App extends Component {
         <Student
           name={this.state.students[0].name}
           age={this.state.students[0].age}
+          index={0}
           incrementAge={this.incrementAge}
         />
         <Student
           name={this.state.students[1].name}
           age={this.state.students[1].age}
+          index={1}
           incrementAge={this.incrementAge}
         />
         <Student
           name={this.state.students[2].name}
           age={this.state.students[2].age}
+          index={2}
           incrementAge={this.incrementAge}
         />
-        <button onClick={this.incrementAge}>Increment age</button>
+        <button onClick={this.incrementAllAge}>Increment all age</button>
       </div>
     );
   }
